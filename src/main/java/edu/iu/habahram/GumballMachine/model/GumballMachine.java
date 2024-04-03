@@ -75,7 +75,7 @@ public class GumballMachine implements IGumballMachine {
 
 
     @Override
-    public TransitionResult dispense() {
+    public TransitionResult dispense(){
         boolean succeeded = false;
         String message = "";
         String stateAfterAttempt = null;

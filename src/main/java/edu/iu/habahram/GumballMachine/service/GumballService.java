@@ -58,6 +58,34 @@ public class GumballService implements IGumballService{
         return result;
     }
 
+    @Override
+    public TransitionResult Quarter(String id) throws IOException{
+        GumballMachineRecord record = gumballRepository.findById(id);
+        IGumballMachine machine = new GumballMachine(record.getId(), record.getState(), record.getCount());
+
+        if(){
+            TransitionResult result = machine.insertQuarter();
+
+        }
+        else if(){
+            TransitionResult result = machine.ejectQuarter();
+
+        }
+        else if(){
+            TransitionResult result = machine.turnCrank();
+
+        }
+
+
+        if(result.succeeded()) {
+            record.setState(result.stateAfter());
+            record.setCount(result.countAfter());
+            save(record);
+        }
+        return result;
+
+    }
+
     
 
     @Override
