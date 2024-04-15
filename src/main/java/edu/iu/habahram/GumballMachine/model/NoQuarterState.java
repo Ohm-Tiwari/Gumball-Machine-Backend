@@ -36,4 +36,12 @@ public class NoQuarterState implements IState{
     public String getTheName() {
         return GumballMachineState.NO_QUARTER.name();
     }
+
+    @Override
+    public TransitionResult refill(){
+        String message = "You refilled the machine";
+        boolean succeeded = true;
+        int count = gumballMachine.getCount();
+
+    }
 }
