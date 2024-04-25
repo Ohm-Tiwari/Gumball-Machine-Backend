@@ -85,4 +85,11 @@ public class GumballMachine2 implements IGumballMachine{
             }
         }
     }
+
+    @Override
+    public TransitionResult refill(int count) {
+        this.count = count;
+        changeTheStateTo(GumballMachineState.NO_QUARTER);
+        return new TransitionResult(true, "Refilled", getTheStateName(), count);
+    }
 }

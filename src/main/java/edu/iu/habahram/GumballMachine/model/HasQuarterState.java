@@ -39,6 +39,13 @@ public class HasQuarterState implements IState {
     }
 
     @Override
+    public TransitionResult refill(int count) {
+        String message = "Refill not allowed";
+        boolean succeeded = false;
+        return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
+    }
+
+    @Override
     public String getTheName() {
         return GumballMachineState.HAS_QUARTER.name();
     }
