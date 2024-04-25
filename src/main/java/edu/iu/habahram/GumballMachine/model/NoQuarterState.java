@@ -8,26 +8,26 @@ public class NoQuarterState implements IState{
     @Override
     public TransitionResult insertQuarter() {
         gumballMachine.changeTheStateTo(GumballMachineState.HAS_QUARTER);
-        String message = "You inserted a quarter";
+        String message = "Inserted a quarter";
         boolean succeeded = true;
         int count = gumballMachine.getCount();
         return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), count);
     }
     @Override
     public TransitionResult ejectQuarter() {
-        String message = "You haven't inserted a quarter";
+        String message = "You have not inserted a quarter";
         boolean succeeded = false;
         return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
     }
     @Override
     public TransitionResult turnCrank() {
-        String message = "You turned, but there's no quarter";
+        String message = "There's no quarter";
         boolean succeeded = false;
         return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
     }
     @Override
     public TransitionResult dispense() {
-        String message = "You need to pay first";
+        String message = "Pay first";
         boolean succeeded = false;
         return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
 
@@ -35,13 +35,5 @@ public class NoQuarterState implements IState{
     @Override
     public String getTheName() {
         return GumballMachineState.NO_QUARTER.name();
-    }
-
-    @Override
-    public TransitionResult refill(){
-        String message = "You refilled the machine";
-        boolean succeeded = true;
-        int count = gumballMachine.getCount();
-
     }
 }

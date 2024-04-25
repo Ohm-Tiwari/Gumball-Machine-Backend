@@ -1,30 +1,27 @@
 package edu.iu.habahram.GumballMachine.model;
 
-public class SoldState implements IState{
+public class SoldState implements IState {
     IGumballMachine gumballMachine;
+
     public SoldState(IGumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
     }
+
     @Override
     public TransitionResult insertQuarter() {
-        gumballMachine.changeTheStateTo(GumballMachineState.HAS_QUARTER);
-        String message = "You inserted a quarter";
-        boolean succeeded = true;
-        int count = gumballMachine.getCount();
-        return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), count);
+        return new TransitionResult(false, "Please wait, we're already giving you a gumball", gumballMachine.getTheStateName(), gumballMachine.getCount());
     }
+
     @Override
     public TransitionResult ejectQuarter() {
-        String message = "You ejected a quarter";
-        boolean succeeded = true;
-        return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
+        return new TransitionResult(false, "Sorry, you already turned the crank", gumballMachine.getTheStateName(), gumballMachine.getCount());
     }
+
     @Override
     public TransitionResult turnCrank() {
-        String message = "You turned the crank";
-        boolean succeeded = true;
-        return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
+        return new TransitionResult(false, "Turning again doesn't get you another gumball!", gumballMachine.getTheStateName(), gumballMachine.getCount());
     }
+
     @Override
     public TransitionResult dispense() {
         String message = "Candy dispensed";
@@ -32,8 +29,9 @@ public class SoldState implements IState{
         return new TransitionResult(succeeded, message, gumballMachine.getTheStateName(), gumballMachine.getCount());
 
     }
+
     @Override
     public String getTheName() {
-        return GumballMachineState.NO_QUARTER.name();
+        return GumballMachineState.GUMBALL_SOLD.name();
     }
 }
