@@ -43,15 +43,6 @@ public class GumballMachine2 implements IGumballMachine{
         this.count = count;
         changeTheStateTo(GumballMachineState.valueOf(stateName));
     }
-    @Override
-    public TransitionResult insertQuarter() {
-        return state.insertQuarter();
-    }
-
-    @Override
-    public TransitionResult ejectQuarter() {
-        return state.ejectQuarter();
-    }
 
     @Override
     public TransitionResult turnCrank() {
@@ -62,6 +53,17 @@ public class GumballMachine2 implements IGumballMachine{
             return new TransitionResult(false, "Failed: " + result.message(), state.getTheName(), count);
         }
     }
+    @Override
+    public TransitionResult insertQuarter() {
+        return state.insertQuarter();
+    }
+
+    @Override
+    public TransitionResult ejectQuarter() {
+        return state.ejectQuarter();
+    }
+
+
 
     @Override
     public void releaseBall() {
